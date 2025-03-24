@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBot - Medical Assistant</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e7f1;
+        }
+
+        .chat-header {
+            background: #2a5c8a;
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-header .med-icon {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-header span {
+            font-size: 24px;
+            color: #2a5c8a;
+        }
+
+        .chat-header h2 {
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1.5rem;
+            height: 60vh;
+            overflow-y: auto;
+            background: #f9fbfd;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1rem;
+            border-radius: 12px;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .bot-message {
+            background: #fff;
+            border: 1px solid #e0e7f1;
+            align-self: flex-start;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .user-message {
+            background: #2a5c8a;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chat-footer {
+            padding: 1rem;
+            background: #fff;
+            border-top: 1px solid #e0e7f1;
+        }
+
+        .chat-form {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e7f1;
+            border-radius: 8px;
+            resize: none;
+            font-size: 1rem;
+            min-height: 48px;
+            max-height: 120px;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: #2a5c8a;
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .chat-controls button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #2a5c8a;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .chat-controls button:hover {
+            background: #f0f4f9;
+        }
+
+        #send-message {
+            background: #2a5c8a;
+            color: white;
+        }
+
+        #send-message:hover {
+            background: #1d4569;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .attachment-preview {
+            max-width: 200px;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="med-icon">
+                <span class="material-symbols-rounded">medical_services</span>
+            </div>
+            <h2>MediBot - Your Medical Assistant</h2>
+        </div>
+        
+        <div class="chat-body" id="chat-body">
+            <div class="message bot-message">
+                Hello! I'm MediBot. How can I assist you with your health today?
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <form class="chat-form">
+                <textarea class="message-input" placeholder="Type your health concern..." required></textarea>
+                <div class="chat-controls">
+                    <button type="button" id="emoji-picker">
+                        <span class="material-symbols-rounded">mood</span>
+                    </button>
+                    <button type="button" id="file-upload">
+                        <span class="material-symbols-rounded">attach_file</span>
+                    </button>
+                    <button type="submit" id="send-message">
+                        <span class="material-symbols-rounded">send</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Original functionality remains the same
+        const chatBody = document.querySelector(".chat-body");
+        const messageInput = document.querySelector(".message-input");
+        const sendMessage = document.querySelector("#send-message");
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.hidden = true;
+
+        document.querySelector("#file-upload").addEventListener("click", () => fileInput.click());
+        
+        // Rest of your original JavaScript code here
+        // (Keep all your existing functionality including API calls)
+    </script>
+</body>
+</html>
